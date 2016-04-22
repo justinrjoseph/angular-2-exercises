@@ -32,10 +32,12 @@ export class GitHubProfileComponent {
 		this.isLoading = true;
 
 		this._githubProfileService.getProfile(this.username)
-				.subscribe(profile => {
-					this.profileAvatar = profile[0].avatar_url;
-					this.followers = profile[1];
-					this.isLoading = false;
-				});
+				.subscribe(
+					profile => {
+						this.profileAvatar = profile[0].avatar_url;
+						this.followers = profile[1];
+					},
+					null,
+					() => { this.isLoading = false; });
 	}
 }

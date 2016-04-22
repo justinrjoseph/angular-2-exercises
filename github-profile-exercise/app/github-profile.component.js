@@ -39,8 +39,7 @@ System.register(['angular2/core', 'angular2/http', './github-profile.service'], 
                         .subscribe(function (profile) {
                         _this.profileAvatar = profile[0].avatar_url;
                         _this.followers = profile[1];
-                        _this.isLoading = false;
-                    });
+                    }, null, function () { _this.isLoading = false; });
                 };
                 GitHubProfileComponent = __decorate([
                     core_1.Component({

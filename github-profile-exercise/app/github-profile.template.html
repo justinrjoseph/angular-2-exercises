@@ -4,9 +4,7 @@
   <div class="github-handle">
     @{{ username }}
   </div>
-	<div *ngIf="isLoading">
-		<i class="fa fa-spinner fa-spin fa-3x"></i>
-	</div>
+	<i *ngIf="isLoading" class="fa fa-spinner fa-spin fa-3x"></i>
 	<div *ngIf="profileAvatar">
 	  <div class="github-avatar">
 	    <img [src]="profileAvatar" class="avatar">
