@@ -29,10 +29,10 @@ System.register(['angular2/http', 'rxjs/Rx', 'rxjs/add/observable/forkJoin', 'rx
             GitHubProfileService = (function () {
                 function GitHubProfileService(_http) {
                     this._http = _http;
-                    this._profileUrl = "https://api.github.com/users/octocat";
-                    this._followersUrl = "https://api.github.com/users/octocat/followers";
                 }
-                GitHubProfileService.prototype.getProfile = function () {
+                GitHubProfileService.prototype.getProfile = function (username) {
+                    this._profileUrl = "https://api.github.com/users/" + username;
+                    this._followersUrl = "https://api.github.com/users/" + username + "/followers";
                     return Rx_1.Observable.forkJoin(this._http.get(this._profileUrl).map(function (res) { return res.json(); }), this._http.get(this._followersUrl).map(function (res) { return res.json(); }));
                 };
                 GitHubProfileService = __decorate([

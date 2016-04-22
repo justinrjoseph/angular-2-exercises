@@ -1,11 +1,26 @@
-<div class="media">
-  <div class="media-left">
-    <a href="#">
-      <img class="media-object" src="..." alt="...">
-    </a>
+<input type="text" [(ngModel)]="username">
+<button class="btn btn-primary" (click)="retrieveProfile(username)">Retrieve GitHub Profile</button>
+<div class="github-profile">
+  <div class="github-handle">
+    @{{ username }}
   </div>
-  <div class="media-body">
-    <h4 class="media-heading">Media heading</h4>
-    ...
+	<div *ngIf="isLoading">
+		<i class="fa fa-spinner fa-spin fa-3x"></i>
+	</div>
+	<div *ngIf="profileAvatar">
+	  <div class="github-avatar">
+	    <img [src]="profileAvatar" class="avatar">
+	  </div>
+  </div>
+  <div *ngIf="followers">
+  	<h2>Followers</h2>
+		<div class="media" *ngFor="#follower of followers">
+		  <div class="media-left">
+		    <img [src]="follower.avatar_url" class="avatar">
+		  </div>
+		  <div class="media-body">
+		    <h4 class="media-heading">{{ follower.login }}</h4>
+		  </div>
+		</div>
   </div>
 </div>
